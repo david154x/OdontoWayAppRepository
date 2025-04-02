@@ -41,7 +41,7 @@ public class PerfilUsuarioEntity implements Serializable {
 	@JoinColumn(name="id_perf", nullable = false)
 	private PerfilEntity perfilEntity;
 	
-	@Column(name="id_esta", nullable = false)
+	@Column(name="id_esta", length = 1, nullable = false)
 	private String idEstado;
 	
 	@Temporal(TemporalType.DATE)

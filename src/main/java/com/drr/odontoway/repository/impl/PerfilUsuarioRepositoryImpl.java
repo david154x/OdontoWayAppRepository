@@ -1,6 +1,5 @@
 package com.drr.odontoway.repository.impl;
 
-import java.util.Comparator;
 import java.util.List;
 
 import com.drr.odontoway.core.JpaUtil;

@@ -1,13 +1,10 @@
 package com.drr.odontoway.repository.impl;
 
-import java.util.Comparator;
 import java.util.List;
-import java.util.Objects;
 
 import com.drr.odontoway.core.JpaUtil;
 import com.drr.odontoway.core.impl.GenericRepositoryImpl;
 import com.drr.odontoway.entity.MenuPerfilEntity;
-import com.drr.odontoway.entity.PerfilUsuarioEntity;
 import com.drr.odontoway.repository.MenuPerfilRepository;
 
 import jakarta.enterprise.context.ApplicationScoped;

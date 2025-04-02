@@ -37,11 +37,17 @@ public class MenuEntity implements Serializable {
 	@Column(name="de_ruta_url", nullable = false)
 	private String rutaUrl;
 	
+	@Column(name="de_nomb_docu", nullable = false)
+	private String nombreDocumento;
+	
 	@Column(name="de_icon_menu", length = 12)
 	private String iconoMenu;
 	
-	@Column(name="id_menu_padr", nullable = true)
-	private Integer menuPadre;
+	@Column(name="id_modu_menu", nullable = true)
+	private Integer moduloMenu;
+	
+	@Column(name="id_sub_menu", nullable = true)
+	private Integer subMenu;
 	
 	@Column(name="id_esta", length = 1, nullable = false)
 	private String idEstado;
