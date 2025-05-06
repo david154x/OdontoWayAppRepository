@@ -32,10 +32,10 @@ public class RolEntity implements Serializable {
 	private Integer idRol;
 	
 	@Column(name="de_nomb_rol", nullable = false)
-	private String nombreUsuario;
+	private String nombre;
 	
 	@Column(name="de_desc_rol", nullable = false)
-	private String passUsuario;
+	private String descripcion;
 	
 	@Column(name="id_esta", length = 1, nullable = false)
 	private String idEstado;

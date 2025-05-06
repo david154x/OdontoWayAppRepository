@@ -40,7 +40,7 @@ public class MenuEntity implements Serializable {
 	@Column(name="de_nomb_docu", nullable = false)
 	private String nombreDocumento;
 	
-	@Column(name="de_icon_menu", length = 12)
+	@Column(name="de_icon_menu", length = 12, nullable = true)
 	private String iconoMenu;
 	
 	@Column(name="id_modu_menu", nullable = true)
@@ -48,6 +48,12 @@ public class MenuEntity implements Serializable {
 	
 	@Column(name="id_sub_menu", nullable = true)
 	private Integer subMenu;
+	
+	@Column(name="de_nomb_view", nullable = true)
+	private String nombreClaseView;
+	
+	@Column(name="cd_nume_item", nullable = false)
+	private Integer numeroItem;
 	
 	@Column(name="id_esta", length = 1, nullable = false)
 	private String idEstado;

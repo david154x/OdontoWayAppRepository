@@ -16,7 +16,7 @@
 	
 	<properties>
 	
-		<jakarta.persistence.api.version>3.0.0</jakarta.persistence.api.version>
+		<jakarta.persistence.api.version>3.1.0</jakarta.persistence.api.version>
 		
 		<hibernate.core.version>6.5.2.Final</hibernate.core.version>
 		<mariadb.version>3.4.1</mariadb.version>

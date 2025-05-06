@@ -54,7 +54,7 @@ public class GenericRepositoryImpl<T, ID> implements GenericRepository<T, ID> {
 	@Override
 	@Transactional
 	public void delete(ID id) {
-		this.jpaUtil.getEntityManager().remove(id);
+		this.jpaUtil.getEntityManager().remove(this.jpaUtil.getEntityManager().find(this.entityClass, id));
 	}
 
 }

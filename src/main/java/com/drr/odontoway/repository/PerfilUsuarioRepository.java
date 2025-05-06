@@ -8,5 +8,7 @@ import com.drr.odontoway.entity.PerfilUsuarioEntity;
 public interface PerfilUsuarioRepository extends GenericRepository<PerfilUsuarioEntity, Integer> {
 	
 	List<PerfilUsuarioEntity> consultarPerfilesXUsuario(Integer idUsuario);
+	
+	Boolean consultarSiUsuarioYaTienePerfil(Integer idUsuario, Integer idPerfil);
 
 }
