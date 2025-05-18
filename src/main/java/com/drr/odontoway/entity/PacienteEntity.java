@@ -71,9 +71,12 @@ public class PacienteEntity implements Serializable {
     
     @Column(name = "de_ocup_paci", nullable = true)
     private String ocupacion;
+    
+    @Column(name="id_auto_trat",  nullable = false, length = 1)
+    private String idAutorizaTratamientoDatos;
 
     @Column(name = "id_esta", nullable = false, length = 1)
-    private String estado;
+    private String idEstado;
 
     @Temporal(TemporalType.DATE)
     @Column(name = "fe_crea", nullable = false)

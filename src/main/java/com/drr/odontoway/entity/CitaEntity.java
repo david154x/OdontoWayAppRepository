@@ -45,20 +45,9 @@ public class CitaEntity implements Serializable {
 	@Column(name = "fe_cita", nullable = false)
 	private Date fecha;
 
-	@Column(name = "hr_cita", nullable = false)
-	private Date hora;
-
-	@Temporal(TemporalType.DATE)
-	@Column(name = "fe_inic_cita", nullable = false)
-	private Date fechaInicio;
-
 	@Temporal(TemporalType.TIME)
 	@Column(name = "hr_inic_cita", nullable = false)
 	private Date horaInicio;
-
-	@Temporal(TemporalType.DATE)
-	@Column(name = "fe_fin_cita", nullable = false)
-	private Date fechaFin;
 
 	@Temporal(TemporalType.TIME)
 	@Column(name = "hr_fin_cita", nullable = false)
