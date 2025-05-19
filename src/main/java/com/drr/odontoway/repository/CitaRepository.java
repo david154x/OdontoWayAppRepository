@@ -9,5 +9,7 @@ import com.drr.odontoway.entity.CitaEntity;
 public interface CitaRepository extends GenericRepository<CitaEntity, Integer> {
 	
 	List<CitaEntity> consultarCitasXProcedimientoUsuarioYFecha(Integer procedimientoUsuario, Date fecha);
+	
+	List<CitaEntity> consultarCitasXUsuarioYFechaYEstado(String usuario, Date fecha);
 
 }

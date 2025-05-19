@@ -43,8 +43,8 @@ public class SeguimientoPacienteEntity implements Serializable {
 	@Column(name = "de_obse")
 	private String observaciones;
 
-	@Column(name = "fe_segu", nullable = false)
-	private Date fechaSeguimiento;
+	@Column(name = "hr_segu", nullable = false)
+	private Date horaSeguimiento;
 
 	@Column(name="id_esta", length = 1, nullable = false)
 	private String idEstado;

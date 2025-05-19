@@ -3,14 +3,26 @@ package com.drr.odontoway.entity;
 import java.util.Date;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+@Entity
+@Table(name = "odmadjse")
+@Data
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class AdjuntoSeguimientoEntity {
 	
 	@Id
@@ -19,7 +31,7 @@ public class AdjuntoSeguimientoEntity {
 	private Integer idAdjunto;
 
 	@ManyToOne
-	@JoinColumn(name = "id_segci", nullable = false)
+	@JoinColumn(name = "id_segpa", nullable = false)
 	private SeguimientoPacienteEntity seguimientoCitaEntity;
 
 	@Column(name = "de_nomb_arch", nullable = false, length = 255)
@@ -27,9 +39,6 @@ public class AdjuntoSeguimientoEntity {
 
 	@Column(name = "de_ruta_arch", nullable = false, length = 100)
 	private String rutaArchivo;
-
-	@Column(name = "de_tipo_doc", nullable = false, length = 50)
-	private String tipoDocumento;
 
 	@Column(name = "id_esta", length = 1, nullable = false)
 	private String idEstado;

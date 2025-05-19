@@ -1,5 +1,6 @@
 package com.drr.odontoway.repository.impl;
 
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -30,12 +31,42 @@ public class CitaRepositoryImpl extends GenericRepositoryImpl<CitaEntity, Intege
 			stBuild.append("SELECT ci FROM CitaEntity ci \n")
 				   .append("WHERE \n")
 				   .append("ci.procedimientoUsuarioEntity.idProcedimientoUsuario = :procedimientoUsuario \n")
-				   .append("AND ci.fecha = :fecha \n");
+				   .append("AND ci.fecha = :fecha \n")
+				   .append("AND ci.idEstado IN (:estadoCita) \n");
 			
 			TypedQuery<CitaEntity> query = this.jpaUtil.getEntityManager().createQuery(stBuild.toString(), CitaEntity.class);
 			
 			query.setParameter("procedimientoUsuario", procedimientoUsuario);
 			query.setParameter("fecha", fecha);
+			query.setParameter("estadoCita", Arrays.asList("A", "C"));
+			
+			List<CitaEntity> lstCitas = query.getResultList();
+			
+			if ( lstCitas != null && !lstCitas.isEmpty() )
+				return lstCitas;
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	@Override
+	public List<CitaEntity> consultarCitasXUsuarioYFechaYEstado(String usuario, Date fecha) {
+		try {
+			
+			StringBuilder stBuild = new StringBuilder();
+			stBuild.append("SELECT ci FROM CitaEntity ci \n")
+				   .append("WHERE \n")
+				   .append("ci.procedimientoUsuarioEntity.usuarioEntity.nombre = :usuario \n")
+				   .append("AND ci.fecha = :fecha \n")
+				   .append("AND ci.idEstado IN (:estadoCita) \n");
+			
+			TypedQuery<CitaEntity> query = this.jpaUtil.getEntityManager().createQuery(stBuild.toString(), CitaEntity.class);
+			
+			query.setParameter("usuario", usuario);
+			query.setParameter("fecha", fecha);
+			query.setParameter("estadoCita", Arrays.asList("A", "C"));
 			
 			List<CitaEntity> lstCitas = query.getResultList();
 			
