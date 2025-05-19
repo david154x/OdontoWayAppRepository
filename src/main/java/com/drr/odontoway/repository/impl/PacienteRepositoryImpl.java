@@ -1,5 +1,10 @@
 package com.drr.odontoway.repository.impl;
 
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import com.drr.odontoway.core.JpaUtil;
 import com.drr.odontoway.core.impl.GenericRepositoryImpl;
 import com.drr.odontoway.entity.PacienteEntity;
@@ -42,6 +47,48 @@ public class PacienteRepositoryImpl extends GenericRepositoryImpl<PacienteEntity
 			e.getMessage();
 		}
 		return null;
+	}
+
+	@Override
+	public List<PacienteEntity> consultarPacienteXFiltro(String numeroDocumento, Integer idPais, Integer idCiudad,
+			String estado, List<Date> fechas) {
+		StringBuilder stBuild = new StringBuilder("SELECT pa FROM PacienteEntity pa WHERE 1=1");
+	    Map<String, Object> parametros = new HashMap<>();
+	    
+	    if ( numeroDocumento != null && !numeroDocumento.isEmpty() ) {
+	        stBuild.append(" AND pa.numeroDocumento = :numeroDocumento");
+	        parametros.put("numeroDocumento", numeroDocumento);
+	    }
+	    
+	    if ( idPais != null ) {
+	        stBuild.append(" AND pa.paisEntity.idPais = :idPais");
+	        parametros.put("idPais", idPais);
+	    }
+	    
+	    if ( idCiudad != null ) {
+	        stBuild.append(" AND pa.ciudadEntity.idCiudad = :idCiudad");
+	        parametros.put("idCiudad", idCiudad);
+	    }
+
+	    if ( estado!= null && !estado.isEmpty()) {
+	        stBuild.append(" AND pa.idEstado = :estado");
+	        parametros.put("estado", estado);
+	    }
+
+	    if ( fechas != null && !fechas.isEmpty() ) {
+
+	        if ( fechas.size() == 2 && fechas.get(0) != null && fechas.get(1) != null ) {
+	        	
+	            stBuild.append(" AND pa.fechaCreacion BETWEEN :fechaInicio AND :fechaFin");
+	            parametros.put("fechaInicio", fechas.get(0));
+	            parametros.put("fechaFin", fechas.get(1));
+	            
+	        }
+	    }
+	    
+	    TypedQuery<PacienteEntity> query = this.jpaUtil.getEntityManager().createQuery(stBuild.toString(), PacienteEntity.class);
+	    parametros.forEach(query::setParameter);
+	    return query.getResultList();
 	}
 
 }

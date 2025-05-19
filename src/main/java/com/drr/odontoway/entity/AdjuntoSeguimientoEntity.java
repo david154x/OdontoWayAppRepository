@@ -32,7 +32,7 @@ public class AdjuntoSeguimientoEntity {
 
 	@ManyToOne
 	@JoinColumn(name = "id_segpa", nullable = false)
-	private SeguimientoPacienteEntity seguimientoCitaEntity;
+	private SeguimientoPacienteEntity seguimientoPacienteEntity;
 
 	@Column(name = "de_nomb_arch", nullable = false, length = 255)
 	private String nombreArchivo;
